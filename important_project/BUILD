@@ -1,5 +1,6 @@
 load("@io_bazel_rules_docker//python3:image.bzl", "py3_image")
 load("@io_bazel_rules_docker//container:container.bzl", "container_layer", "container_image")
+load('//rules:my_lib.bzl', 'important_project')
 
 
 py_binary(
@@ -36,4 +37,9 @@ py3_image(
     srcs = ["important.py"],
     deps = LIBS,
     main = "important.py",
+)
+
+important_project(
+    name = "print_anything",
+    message = "This is hard to understand but it's not impossible",
 )
